@@ -25,7 +25,7 @@ jobs:
       - name: Prepare PDF for upload
         run: |
           mkdir artifacts/ && \
-          mv main.pdf artifacts/resume.pdf
+          mv main.pdf artifacts/GimranovArtur.pdf
 
 
       - name: Upload PDF as artifact
