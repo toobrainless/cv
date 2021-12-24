@@ -14,6 +14,6 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install 
 
 COPY CV /CV
 
-run cd CV && pdflatex main.tex s1mplecv.sty
+RUN cd CV && pdflatex -interaction=nonstopmode main.tex s1mplecv.sty
 
 CMD [ "bash" ]
