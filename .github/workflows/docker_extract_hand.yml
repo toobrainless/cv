@@ -1,0 +1,26 @@
+name: Docker Extract Login
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+
+
+jobs:
+  extract:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Get PTF in Docker
+        run: |
+          docker build --tag test -f Dockerfile .
+          docker run test --name my_image
+          docker cp my_image:/CV/main.pdf .
+        
+      - uses: actions/upload-artifact@v2
+        with:
+          name: CV
+          path: ./main.pdf
