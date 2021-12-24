@@ -9,10 +9,11 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install 
     texlive-pictures \
     texlive-lang-cyrillic \
     texlive-science \
-    cm-super
+    cm-super \
+    texlive-bibtex-extra
 
-COPY main.tex /data/main.tex
+COPY CV /CV
 
-RUN cd ./data/ && pdflatex main.tex
+run cd CV && pdflatex main.tex s1mplecv.sty
 
 CMD [ "bash" ]
