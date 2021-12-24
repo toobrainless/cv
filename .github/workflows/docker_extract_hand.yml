@@ -18,8 +18,8 @@ jobs:
         run: |
           docker build --tag my_image -f Dockerfile .
           docker create --name my_cont my_image
-          docker start test
-          docker cp my_image:/CV/main.pdf .
+          docker start my_cont
+          docker cp my_cont:/CV/main.pdf .
         
       - uses: actions/upload-artifact@v2
         with:
