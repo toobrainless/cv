@@ -20,12 +20,18 @@ jobs:
           docker create --name my_cont my_image
           docker start my_cont
           docker cp my_cont:/CV/main.pdf .
-        
-      - uses: actions/upload-artifact@v2
-        with:
-          name: CV
-          path: ./main.pdf
+      
 
-      - uses: actions/download-artifact@v2
+      - name: Prepare PDF for upload
+        run: |
+          mkdir artifacts/ && \
+          mv main.pdf artifacts/resume.pdf
+
+
+      - name: Upload PDF as artifact
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          name: CV
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: artifacts/
+          publish_branch: artifacts
+          force_orphan: true
