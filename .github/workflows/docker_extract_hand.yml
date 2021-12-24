@@ -25,3 +25,7 @@ jobs:
         with:
           name: CV
           path: ./main.pdf
+
+      - uses: actions/download-artifact@v2
+        with:
+          name: CV
