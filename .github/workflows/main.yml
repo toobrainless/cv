@@ -1,4 +1,4 @@
-name: Docker Extract Login
+name: PublishCV
 
 on:
   push:
@@ -9,12 +9,12 @@ on:
 
 
 jobs:
-  extract:
+  PublishCV:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       
-      - name: Get PDF
+      - name: Get PDF from Docker
         run: |
           docker build --tag my_image -f Dockerfile .
           docker create --name my_cont my_image
