@@ -1,4 +1,4 @@
-name: Docker Extract
+name: Docker Extract Login
 
 on:
   push:
