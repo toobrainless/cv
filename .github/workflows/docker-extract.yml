@@ -1,0 +1,20 @@
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build Docker Image
+        uses: docker/build-push-action@v1
+        with:
+          repository: my-example-image
+          tags: latest
+      - uses: shrink/actions-docker-extract@v1
+        id: extract
+        with:
+          image: my-example-image
+          path: /CV/main.pdf.
+      - name: Upload Dist
+        uses: actions/upload-artifact@v2
+        with:
+          path: ${{ steps.extract.outputs.destination }}
+          name: dist
